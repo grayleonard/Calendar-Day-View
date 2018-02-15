@@ -48,6 +48,7 @@ public class CdvDecorationDefault implements CdvDecoration {
     public DayView getDayView(int hour) {
         DayView dayView = new DayView(mContext);
         dayView.setText(String.format("%1$2s:00", hour));
+        dayView.setOnDayClickListener(mDayClickListener);
         return dayView;
     }
 

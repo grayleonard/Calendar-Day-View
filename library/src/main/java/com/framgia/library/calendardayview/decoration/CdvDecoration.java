@@ -17,4 +17,8 @@ public interface CdvDecoration {
     PopupView getPopupView(IPopup popup, Rect eventBound, int hourHeight, int seperateHeight);
 
     DayView getDayView(int hour);
+
+    void setOnDayClickListener(DayView.OnDayClickListener listener);
+
+    void setOnEventClickListener(EventView.OnEventClickListener listener);
 }
