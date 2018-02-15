@@ -19,6 +19,8 @@ public class CdvDecorationDefault implements CdvDecoration {
 
     protected PopupView.OnEventPopupClickListener mPopupClickListener;
 
+    protected DayView.OnDayClickListener mDayClickListener;
+
     public CdvDecorationDefault(Context context) {
         this.mContext = context;
     }
@@ -47,6 +49,10 @@ public class CdvDecorationDefault implements CdvDecoration {
         DayView dayView = new DayView(mContext);
         dayView.setText(String.format("%1$2s:00", hour));
         return dayView;
+    }
+
+    public void setOnDayClickListener(DayView.OnDayClickListener listener) {
+        this.mDayClickListener = listener;
     }
 
     public void setOnEventClickListener(EventView.OnEventClickListener listener) {

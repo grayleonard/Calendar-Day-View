@@ -42,6 +42,8 @@ public class CalendarDayView extends FrameLayout {
 
     private FrameLayout mLayoutPopup;
 
+    private OnClickListener mOnDayClickListener;
+
     private CdvDecoration mDecoration;
 
     private List<? extends IEvent> mEvents;
@@ -162,6 +164,11 @@ public class CalendarDayView extends FrameLayout {
     public void setEvents(List<? extends IEvent> events) {
         this.mEvents = events;
         refresh();
+    }
+
+    public void setOnDayClickListener(OnClickListener listener) {
+	this.mOnDayClickListener = listener;
+	refresh();
     }
 
     public void setPopups(List<? extends IPopup> popups) {
