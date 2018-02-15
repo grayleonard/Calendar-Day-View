@@ -17,7 +17,7 @@ import android.widget.TextView;
  */
 public class DayView extends FrameLayout {
 
-    private TextView mTextHour;
+    public TextView mTextHour;
 
     private LinearLayout mSeparateHour;
     protected OnDayClickListener mDayClickListener;

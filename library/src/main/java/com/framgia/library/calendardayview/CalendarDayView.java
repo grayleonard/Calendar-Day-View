@@ -28,7 +28,7 @@ public class CalendarDayView extends FrameLayout {
 
     private int mHourWidth = 120;
 
-    private int mTimeHeight = 120;
+    private int mTimeHeight = 50;
 
     private int mSeparateHourHeight = 0;
 
