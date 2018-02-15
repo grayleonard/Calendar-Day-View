@@ -6,6 +6,8 @@ import android.text.StaticLayout;
 import android.util.AttributeSet;
 import android.util.Log;
 import android.view.LayoutInflater;
+import android.view.View;
+import android.view.ViewGroup;
 import android.widget.FrameLayout;
 import android.widget.LinearLayout;
 import android.widget.TextView;
@@ -18,6 +20,7 @@ public class DayView extends FrameLayout {
     private TextView mTextHour;
 
     private LinearLayout mSeparateHour;
+    protected OnDayClickListener mDayClickListener;
 
     public DayView(Context context) {
         super(context);
@@ -39,6 +42,31 @@ public class DayView extends FrameLayout {
 
         mTextHour = (TextView) findViewById(R.id.text_hour);
         mSeparateHour = (LinearLayout) findViewById(R.id.separate_hour);
+        super.setOnClickListener(new OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if(mDayClickListener!= null){
+                    mDayClickListener.onDayClick(DayView.this);
+                }
+            }
+        });
+
+        OnClickListener eventItemClickListener = new OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if(mDayClickListener != null) {
+                    mDayClickListener.onDayViewClick(v, DayView.this);
+                }
+            }
+        };
+    }
+    public void setOnDayClickListener(OnDayClickListener listener){
+        this.mDayClickListener = listener;
+    }
+
+    @Override
+    public void setOnClickListener(final OnClickListener l) {
+        throw new UnsupportedOperationException("you should use setOnDayClickListener()");
     }
 
     public void setText(String text) {
@@ -79,5 +107,8 @@ public class DayView extends FrameLayout {
         }
 
     }
-
+    public interface OnDayClickListener {
+        void onDayClick(DayView view);
+        void onDayViewClick(View view, DayView dayView);
+    }
 }
